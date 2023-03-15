@@ -149,6 +149,7 @@ def clickOperatingExpense(url):
         driver.get(url)
         WebDriverWait(driver, constants.SLEEP_TIME).until(EC.element_to_be_clickable((By.XPATH, "//button[@aria-label='Close']"))).click()
         WebDriverWait(driver, constants.SLEEP_TIME).until(EC.element_to_be_clickable((By.XPATH, "//div[@title='Operating Expense']/button[@aria-label='Operating Expense']"))).click()
+        time.sleep(constants.SLEEP_TIME)
         soup = BeautifulSoup(driver.page_source, 'html.parser')
         return soup
     except Exception as e:
