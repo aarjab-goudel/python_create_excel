@@ -182,5 +182,25 @@ def readDataFromPageSource(soup, label, tag):
         error_row = ['0.000', '0.000', '0.000', '0.000']
         return error_row
 
+def readCurrencyType(soup, text, tag_name):
+    try:
+        currency_tag_results = soup.find_all(lambda tag: tag.name == tag_name and text in tag.text)
+        span_tag = currency_tag_results[1]
+        span_text = span_tag.text
+        if (span_text == text):
+            return 'USD'
+        else:
+            split_text = span_text.split(".")[0]
+            currency_type = split_text.split(" ")[2]
+            return currency_type
+    except Exception as e:
+        print('-------------------------------------------------')
+        print('EXCEPTION OCCURED IN READ CURRENCY TYPE!!!!')
+        print(e)
+        print('-------------------------------------------------')
+        return 'ERROR'
+        
+
+
     
 

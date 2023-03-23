@@ -85,7 +85,8 @@ def readAnnualBSDataForTicker(ticker):
         bsObj.totalCash = getRowValueFromStatisticsRow(soup, 'Total Cash', 'span')['Total Cash']
         bsObj.totalDebt = getRowValueFromStatisticsRow(soup, 'Total Debt', 'span')['Total Debt']
         bsObj.currentRatio = getRowValueFromStatisticsRow(soup, 'Current Ratio', 'span')['Current Ratio']
-    except:
+    except Exception as e:
+        print(e)
         bsObj.totalCash = '0.000'
         bsObj.totalDebt = '0.000'
         bsObj.currentRatio = '0.000'

@@ -153,7 +153,7 @@ def writeToCFSheet(cfSheet, cfObjs, stockObjs, tickers, year):
         cfObj = findObjByTicker(cfObjs, ticker)
         isCfObjValid(cfObj, year)
         stockObj = findObjByTicker(stockObjs, ticker)
-        cfSheetDataContent = [stockObj.fullName, stockObj.ticker, stockObj.sector, stockObj.industry, cfObj.dates[year], 'USD', cfObj.freeCashFlow[year], '0.000', cfObj.netCashByOperatingActivities[year], '0.000', cfObj.netCashForInvestingActivities[year], cfObj.netCashForFinancingActivities[year], '0.000', stockObj.ticker]
+        cfSheetDataContent = [stockObj.fullName, stockObj.ticker, stockObj.sector, stockObj.industry, cfObj.dates[year], stockObj.currency, cfObj.freeCashFlow[year], '0.000', cfObj.netCashByOperatingActivities[year], '0.000', cfObj.netCashForInvestingActivities[year], cfObj.netCashForFinancingActivities[year], '0.000', stockObj.ticker]
         for content in cfSheetDataContent:
             cfSheet.write(row, column, content)
             column += 1
@@ -192,7 +192,7 @@ def writeToISSheet(isSheet, isObjs, stockObjs, tickers, year):
         isObj = findObjByTicker(isObjs, ticker)
         isIsObjValid(isObj, year)
         stockObj = findObjByTicker(stockObjs, ticker)
-        isSheetDataContent = [stockObj.fullName, stockObj.ticker, stockObj.sector, stockObj.industry, isObj.dates[year], 'USD', isObj.revenue[year], '0.000', isObj.costOfRevenue[year], '0.000', isObj.grossProfit[year], '0.000', isObj.netIncome[year], '0.000', isObj.researchAndDevelopment[year], '0.000', stockObj.ticker]
+        isSheetDataContent = [stockObj.fullName, stockObj.ticker, stockObj.sector, stockObj.industry, isObj.dates[year], stockObj.currency, isObj.revenue[year], '0.000', isObj.costOfRevenue[year], '0.000', isObj.grossProfit[year], '0.000', isObj.netIncome[year], '0.000', isObj.researchAndDevelopment[year], '0.000', stockObj.ticker]
         #isSheetDataContent = [stockObj.fullName, stockObj.ticker, stockObj.sector, stockObj.industry, isObj.dates[year], 'USD', isObj.revenue[year], '0.000', isObj.costOfRevenue[year], '0.000', isObj.grossProfit[year], '0.000', isObj.netIncome[year], '0.000', '0.000', '0.000', isObj.researchAndDevelopment[year], '0.000', stockObj.ticker]
         for content in isSheetDataContent:
             isSheet.write(row, column, content)
@@ -230,7 +230,7 @@ def writeToBalanceSheet(bsSheet, bsObjs, stockObjs, tickers, year):
         bsObj = findObjByTicker(bsObjs, ticker)
         isBsObjValid(bsObj, year)
         stockObj = findObjByTicker(stockObjs, ticker)
-        bsSheetDataContent = [stockObj.fullName, stockObj.ticker, stockObj.sector, stockObj.industry, bsObj.dates[year], 'USD', bsObj.totalEquity[year], '0.000', bsObj.totalAssets[year], bsObj.totalLiabilities[year], bsObj.totalCash, bsObj.totalDebt, bsObj.currentRatio, stockObj.ticker ]
+        bsSheetDataContent = [stockObj.fullName, stockObj.ticker, stockObj.sector, stockObj.industry, bsObj.dates[year], stockObj.currency, bsObj.totalEquity[year], '0.000', bsObj.totalAssets[year], bsObj.totalLiabilities[year], bsObj.totalCash, bsObj.totalDebt, bsObj.currentRatio, stockObj.ticker ]
         #bsSheetDataContent = [stockObj.fullName, stockObj.ticker, stockObj.sector, stockObj.industry, bsObj.dates[year], 'USD', '0.000', '0.000', bsObj.totalEquity[year], '0.000', '0.000', bsObj.totalAssets[year], bsObj.totalLiabilities[year], bsObj.netTangibleAssets[year], bsObj.shortTermDebt[year], bsObj.longTermDebt[year], '0.000', '0.000', stockObj.ticker]
         for content in bsSheetDataContent:
             bsSheet.write(row, column, content)

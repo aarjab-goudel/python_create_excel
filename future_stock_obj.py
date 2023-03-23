@@ -53,7 +53,8 @@ def readFutureStockData(ticker):
         revenueTable = ls[1].find_all('tr')
         futureStockObj.currentYearRev = revenueTable[2].find_all('td')[3].get_text()
         futureStockObj.nextYearRev = revenueTable[2].find_all('td')[4].get_text()
-    except:
+    except Exception as e:
+        print(e)
         futureStockObj.currentYear = '0.000'
         futureStockObj.nextYear = '0.000'
         futureStockObj.currentYearEPS = '0.000'
